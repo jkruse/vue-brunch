@@ -19,7 +19,7 @@
   "dependencies": {
     "insert-css": "^2.0.0",
     "vue-hot-reload-api": "^2.1.0",
-    "vueify": "^9.4.1",
+    "vueify": "github:jkruse/vueify",
     "vueify-insert-css": "^1.0.0"
   },
   "devDependencies": {
