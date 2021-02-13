@@ -3,8 +3,8 @@
 
 'use strict';
 
-const test = require('ava').test;
-const VueBrunch = require('.');
+const test = require('ava');
+const VueBrunch = require('../source/index');
 
 test.beforeEach(t => {
   t.context.plugin = new VueBrunch();
@@ -32,6 +32,17 @@ test('should compile a Vue template with no css', t => {
 test('should compile a Vue template with css', t => {
   const file = {
     data: '<style>h1 {color: red;}</style><template><h1>Hello World!</h1></template><script>export default {name: "hello"};</script>',
+    path: 'Test.vue',
+  };
+
+  return t.context.plugin.compile(file).then(result => {
+    t.true(result.length > 0);
+  });
+});
+
+test('should compile a Vue template with scoped css', t => {
+  const file = {
+    data: '<style scoped>h1 {color: red;}</style><template><h1>Hello World!</h1></template><script>export default {name: "hello"};</script>',
     path: 'Test.vue',
   };
 
